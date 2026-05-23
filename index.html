@@ -911,6 +911,30 @@
   }
   .tile-awards .award-list li::before { content: '★'; color: var(--lime); font-size: 10px; flex-shrink: 0; }
 
+  .tile-reading { grid-column: span 3; }
+  .tile-reading .book-title {
+    font-family: var(--display);
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--lime);
+    margin-bottom: 6px;
+  }
+  .tile-reading .book-author {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .tile-reading .book-note {
+    font-size: 13px;
+    color: var(--text-faint);
+    line-height: 1.5;
+  }
+
   .tile-mentor { grid-column: span 3; }
   .tile-mentor h4 {
     font-family: var(--display);
@@ -979,6 +1003,7 @@
     .tile-now { grid-column: span 6; }
     .tile-awards { grid-column: span 3; }
     .tile-mentor { grid-column: span 3; }
+    .tile-reading { grid-column: span 3; }
     .projects-bento { grid-template-columns: 1fr; }
   }
   @media (max-width: 720px) {
@@ -991,7 +1016,7 @@
     .terminal { margin-top: 56px; }
     .bento { grid-template-columns: repeat(2, 1fr); }
     .tile-intro, .tile-location, .tile-stack, .tile-focus, .tile-now,
-    .tile-awards, .tile-mentor { grid-column: span 2; }
+    .tile-awards, .tile-mentor, .tile-reading { grid-column: span 2; }
     .project-card { padding: 28px; min-height: 380px; }
     .contact { padding: 100px 0 80px; }
     .email-card { padding: 8px 8px 8px 16px; flex-direction: column; gap: 8px; align-items: stretch; text-align: center; }
@@ -1126,6 +1151,13 @@
         <h4>Mentor</h4>
         <div class="mentor-org">Jumpstart Your Career · Software Dev Learnership</div>
         <p>Mentored learners through debugging sessions, code reviews, and project planning - helping them build the habits that matter more than syntax.</p>
+      </div>
+
+      <div class="tile tile-reading">
+        <div class="tile-label"><span class="dot"></span> currently reading</div>
+        <div class="book-title">GRIT</div>
+        <div class="book-author">Angela Duckworth</div>
+        <div class="book-note">On why passion and perseverance matter more than talent.</div>
       </div>
     </div>
   </section>
