@@ -699,14 +699,24 @@
     white-space: nowrap;
     display: flex;
     align-items: center;
-    gap: 48px;
+    gap: 0;
   }
   .marquee-item::after {
     content: '✦';
     color: var(--lime);
     font-size: 0.6em;
+    margin-left: 48px;
   }
   .marquee-item:hover { color: var(--text); }
+  .marquee-icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 14px;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    flex-shrink: 0;
+  }
+  .marquee-item:hover .marquee-icon { opacity: 0.9; }
   @keyframes scroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -1074,6 +1084,9 @@
       <a href="#contact" class="btn btn-secondary">
         get in touch <span class="arrow">↗</span>
       </a>
+      <a href="https://drive.google.com/uc?export=download&id=1b_Tbf0CPtCo3DQuSgX1jG2tt5BvxplP6" target="_blank" class="btn btn-secondary">
+        download cv <span class="arrow">↓</span>
+      </a>
     </div>
 
     <div class="terminal" id="terminal">
@@ -1232,27 +1245,27 @@
 
 <div class="marquee-wrap reveal">
   <div class="marquee" id="marquee">
-    <div class="marquee-item">TypeScript</div>
-    <div class="marquee-item">Node.js</div>
-    <div class="marquee-item">PostgreSQL</div>
-    <div class="marquee-item">React Native</div>
-    <div class="marquee-item">Docker</div>
-    <div class="marquee-item">Redis</div>
-    <div class="marquee-item">Python</div>
-    <div class="marquee-item">ESP32</div>
-    <div class="marquee-item">Firebase</div>
-    <div class="marquee-item">Prisma</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/typescript/8B8B96" alt="">TypeScript</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/nodedotjs/8B8B96" alt="">Node.js</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/postgresql/8B8B96" alt="">PostgreSQL</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/react/8B8B96" alt="">React Native</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/docker/8B8B96" alt="">Docker</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/redis/8B8B96" alt="">Redis</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/python/8B8B96" alt="">Python</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/espressif/8B8B96" alt="">ESP32</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/firebase/8B8B96" alt="">Firebase</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/prisma/8B8B96" alt="">Prisma</div>
     <!-- duplicate for seamless loop -->
-    <div class="marquee-item">TypeScript</div>
-    <div class="marquee-item">Node.js</div>
-    <div class="marquee-item">PostgreSQL</div>
-    <div class="marquee-item">React Native</div>
-    <div class="marquee-item">Docker</div>
-    <div class="marquee-item">Redis</div>
-    <div class="marquee-item">Python</div>
-    <div class="marquee-item">ESP32</div>
-    <div class="marquee-item">Firebase</div>
-    <div class="marquee-item">Prisma</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/typescript/8B8B96" alt="">TypeScript</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/nodedotjs/8B8B96" alt="">Node.js</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/postgresql/8B8B96" alt="">PostgreSQL</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/react/8B8B96" alt="">React Native</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/docker/8B8B96" alt="">Docker</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/redis/8B8B96" alt="">Redis</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/python/8B8B96" alt="">Python</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/espressif/8B8B96" alt="">ESP32</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/firebase/8B8B96" alt="">Firebase</div>
+    <div class="marquee-item"><img class="marquee-icon" src="https://cdn.simpleicons.org/prisma/8B8B96" alt="">Prisma</div>
   </div>
 </div>
 
