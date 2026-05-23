@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Home IoT — Case Study · Khula Mthimkhulu</title>
-<meta name="description" content="Case study: Smart Home IoT — an ESP32-based home automation system with real-time monitoring via Firebase, web, and React Native.">
+<title>Smart Home IoT - Case Study · Khula Mthimkhulu</title>
+<meta name="description" content="Case study: Smart Home IoT - an ESP32-based home automation system with real-time monitoring via Firebase, web, and React Native.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -314,7 +314,7 @@
     <h1 class="cs-title">Smart Home<br>IoT<span class="accent">.</span></h1>
 
     <p class="cs-tagline">
-      An IoT home automation system built with ESP32 microcontrollers — sensor data streaming into Firebase, surfaced through a web frontend and React Native app.
+      An IoT home automation system built with ESP32 microcontrollers - sensor data streaming into Firebase, surfaced through a web frontend and React Native app.
     </p>
 
     <div class="cs-meta">
@@ -341,8 +341,8 @@
     <div class="section-label">overview</div>
     <h2 class="section-title">Hardware to <span class="accent">app</span>, end-to-end</h2>
     <div class="cs-prose">
-      <p>Built with two teammates, the goal was simple: take home automation out of consumer black-box territory and build it ourselves — from the hardware up. That meant writing firmware, designing a real-time data pipeline, and shipping two separate frontends that work together.</p>
-      <p>ESP32 microcontrollers sit at the edge, reading sensors and controlling devices. Firebase Realtime Database acts as the sync layer between hardware and software. A custom web frontend and a React Native mobile app both subscribe to that data stream — showing live readings and sending control commands back to the device.</p>
+      <p>Built with two teammates, the goal was simple: take home automation out of consumer black-box territory and build it ourselves - from the hardware up. That meant writing firmware, designing a real-time data pipeline, and shipping two separate frontends that work together.</p>
+      <p>ESP32 microcontrollers sit at the edge, reading sensors and controlling devices. Firebase Realtime Database acts as the sync layer between hardware and software. A custom web frontend and a React Native mobile app both subscribe to that data stream - showing live readings and sending control commands back to the device.</p>
     </div>
   </section>
 
@@ -351,7 +351,7 @@
     <div class="section-label">architecture</div>
     <h2 class="section-title">The <span class="accent">data flow</span></h2>
     <div class="cs-prose">
-      <p>The system has three layers: hardware, sync, and interface. Firebase RTDB is the glue — it decouples the firmware from the frontends so either side can be updated independently.</p>
+      <p>The system has three layers: hardware, sync, and interface. Firebase RTDB is the glue - it decouples the firmware from the frontends so either side can be updated independently.</p>
     </div>
 
     <div class="cs-arch">
@@ -359,7 +359,7 @@
         <div class="arch-dot r"></div>
         <div class="arch-dot y"></div>
         <div class="arch-dot g"></div>
-        <span>architecture.txt — Smart Home IoT</span>
+        <span>architecture.txt - Smart Home IoT</span>
       </div>
       <div class="cs-arch-body"><span class="comment">// Hardware Layer</span>
 <span class="hi-pink">ESP32</span> ──[GPIO]──  <span class="hi">DHT22</span> (temperature + humidity)
@@ -440,14 +440,14 @@
         <div class="cs-decision-num">01</div>
         <div>
           <h4><span class="accent">WiFi reconnection</span> on the ESP32</h4>
-          <p>The ESP32 occasionally drops its WiFi connection. A naive implementation hard-resets on disconnect, causing missed sensor readings and dropped commands. We wrote reconnection logic in MicroPython with exponential backoff — the firmware waits progressively longer between retries rather than hammering the network, then resumes normal operation once it reconnects.</p>
+          <p>The ESP32 occasionally drops its WiFi connection. A naive implementation hard-resets on disconnect, causing missed sensor readings and dropped commands. We wrote reconnection logic in MicroPython with exponential backoff - the firmware waits progressively longer between retries rather than hammering the network, then resumes normal operation once it reconnects.</p>
         </div>
       </div>
       <div class="cs-decision">
         <div class="cs-decision-num">02</div>
         <div>
           <h4><span class="accent">Sensor calibration</span></h4>
-          <p>Raw DHT22 temperature readings consistently read about 4–5°C higher than a reference thermometer — a known issue with the sensor's self-heating in enclosed enclosures. We added calibration offsets in the firmware. This taught us that hardware tolerances are real: you can't just trust a sensor's datasheet at face value in a specific physical installation.</p>
+          <p>Raw DHT22 temperature readings consistently read about 4–5°C higher than a reference thermometer - a known issue with the sensor's self-heating in enclosed enclosures. We added calibration offsets in the firmware. This taught us that hardware tolerances are real: you can't just trust a sensor's datasheet at face value in a specific physical installation.</p>
         </div>
       </div>
       <div class="cs-decision">
@@ -465,8 +465,8 @@
     <div class="section-label">outcome</div>
     <h2 class="section-title">What we <span class="accent">shipped</span></h2>
     <div class="cs-prose">
-      <p>The system ran reliably in a real home environment over several weeks of continuous use. We demonstrated it to assessors and peers — live sensor readings updating in real time on both the web dashboard and mobile app, with device control working in the other direction.</p>
-      <p>For me the biggest takeaway was how different hardware engineering is from pure software. Timing, tolerances, physical installation — things you can't unit test. You have to build, measure, and iterate.</p>
+      <p>The system ran reliably in a real home environment over several weeks of continuous use. We demonstrated it to assessors and peers - live sensor readings updating in real time on both the web dashboard and mobile app, with device control working in the other direction.</p>
+      <p>For me the biggest takeaway was how different hardware engineering is from pure software. Timing, tolerances, physical installation - things you can't unit test. You have to build, measure, and iterate.</p>
     </div>
 
     <div class="cs-outcome-grid">

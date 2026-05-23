@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>eStokvel — Case Study · Khula Mthimkhulu</title>
-<meta name="description" content="Case study: eStokvel — a community savings platform for South African stokvels, spanning USSD, mobile, and web.">
+<title>eStokvel - Case Study · Khula Mthimkhulu</title>
+<meta name="description" content="Case study: eStokvel - a community savings platform for South African stokvels, spanning USSD, mobile, and web.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -325,7 +325,7 @@
     <h1 class="cs-title">eStokvel<span class="accent">.</span></h1>
 
     <p class="cs-tagline">
-      A community savings platform for South African stokvels — built to work across USSD, mobile, and web, from feature phones to smartphones.
+      A community savings platform for South African stokvels - built to work across USSD, mobile, and web, from feature phones to smartphones.
     </p>
 
     <div class="cs-meta">
@@ -355,8 +355,8 @@
     <div class="section-label">background</div>
     <h2 class="section-title">What is a <span class="accent">stokvel</span>?</h2>
     <div class="cs-prose">
-      <p>A stokvel is a rotating savings club — a practice woven into South African community life for generations. Members pool money on a regular schedule and the pot rotates among them, giving each person access to a lump sum they couldn't easily save alone.</p>
-      <p>An estimated <strong>11 million South Africans</strong> participate in stokvels, collectively managing over <strong>R50 billion a year</strong>. Almost all of it is tracked through spreadsheets, WhatsApp groups, and handshakes. eStokvel replaces that with a proper digital platform — member management, contribution tracking, payout scheduling, and financial history.</p>
+      <p>A stokvel is a rotating savings club - a practice woven into South African community life for generations. Members pool money on a regular schedule and the pot rotates among them, giving each person access to a lump sum they couldn't easily save alone.</p>
+      <p>An estimated <strong>11 million South Africans</strong> participate in stokvels, collectively managing over <strong>R50 billion a year</strong>. Almost all of it is tracked through spreadsheets, WhatsApp groups, and handshakes. eStokvel replaces that with a proper digital platform - member management, contribution tracking, payout scheduling, and financial history.</p>
     </div>
 
     <div class="cs-stats">
@@ -380,9 +380,9 @@
     <div class="section-label">the problem</div>
     <h2 class="section-title">One system, <span class="accent">three</span> interfaces</h2>
     <div class="cs-prose">
-      <p>The hard part wasn't building one interface — it was building three that all talk to the same underlying system. South Africa's digital divide is real: group secretaries might be on a laptop, urban members on a smartphone, and rural members on a basic feature phone with no data plan.</p>
-      <p><strong>USSD</strong> is the key constraint. It's the technology behind short codes like *120*321# — works on any mobile phone, no internet required. But USSD is fundamentally stateless: every keypress triggers a fresh HTTP request to a webhook. No persistent connection, no cookies — just a new call each time the user presses a digit.</p>
-      <p>That means every piece of session state — which menu the user is in, what they're entering, which group they're managing — has to be stored externally and reconstructed on each incoming request. The 182-character-per-screen limit adds another constraint: every menu has to be ruthlessly concise.</p>
+      <p>The hard part wasn't building one interface - it was building three that all talk to the same underlying system. South Africa's digital divide is real: group secretaries might be on a laptop, urban members on a smartphone, and rural members on a basic feature phone with no data plan.</p>
+      <p><strong>USSD</strong> is the key constraint. It's the technology behind short codes like *120*321# - works on any mobile phone, no internet required. But USSD is fundamentally stateless: every keypress triggers a fresh HTTP request to a webhook. No persistent connection, no cookies - just a new call each time the user presses a digit.</p>
+      <p>That means every piece of session state - which menu the user is in, what they're entering, which group they're managing - has to be stored externally and reconstructed on each incoming request. The 182-character-per-screen limit adds another constraint: every menu has to be ruthlessly concise.</p>
     </div>
   </section>
 
@@ -391,7 +391,7 @@
     <div class="section-label">architecture</div>
     <h2 class="section-title">How it's <span class="accent">built</span></h2>
     <div class="cs-prose">
-      <p>A single Express API serves all three surfaces. USSD requests arrive as webhooks from Africa's Talking; REST calls come from the mobile and web apps. All three share the same business logic, database, and auth layer — a bug fix or feature addition applies everywhere at once.</p>
+      <p>A single Express API serves all three surfaces. USSD requests arrive as webhooks from Africa's Talking; REST calls come from the mobile and web apps. All three share the same business logic, database, and auth layer - a bug fix or feature addition applies everywhere at once.</p>
     </div>
 
     <div class="cs-arch">
@@ -399,7 +399,7 @@
         <div class="arch-dot r"></div>
         <div class="arch-dot y"></div>
         <div class="arch-dot g"></div>
-        <span>architecture.txt — eStokvel</span>
+        <span>architecture.txt - eStokvel</span>
       </div>
       <div class="cs-arch-body"><span class="comment">// Clients</span>
 <span class="hi-blue">Feature Phone</span>   ──USSD──────────▶  <span class="hi">Africa's Talking</span>  (gateway)
@@ -478,21 +478,21 @@
         <div class="cs-decision-num">01</div>
         <div>
           <h4><span class="accent">Redis</span> for USSD session state</h4>
-          <p>USSD has no concept of a persistent session — each keypress is an independent HTTP webhook call. Redis stores the user's current menu position and any in-progress input (like an amount being typed) with a 5-minute TTL. If a user drops off mid-flow, the Redis key expires cleanly. This was the most novel constraint I had to design around — managing a stateful UX on a stateless protocol.</p>
+          <p>USSD has no concept of a persistent session - each keypress is an independent HTTP webhook call. Redis stores the user's current menu position and any in-progress input (like an amount being typed) with a 5-minute TTL. If a user drops off mid-flow, the Redis key expires cleanly. This was the most novel constraint I had to design around - managing a stateful UX on a stateless protocol.</p>
         </div>
       </div>
       <div class="cs-decision">
         <div class="cs-decision-num">02</div>
         <div>
           <h4><span class="accent">Prisma ORM</span> over raw SQL</h4>
-          <p>For a financial platform, schema drift caught at compile time is worth the abstraction. Prisma's type-safe queries mean a mismatched column type or missing field is a build error rather than a silent runtime bug in production. That matters when the data represents real money — a wrong type on a contribution amount has real consequences.</p>
+          <p>For a financial platform, schema drift caught at compile time is worth the abstraction. Prisma's type-safe queries mean a mismatched column type or missing field is a build error rather than a silent runtime bug in production. That matters when the data represents real money - a wrong type on a contribution amount has real consequences.</p>
         </div>
       </div>
       <div class="cs-decision">
         <div class="cs-decision-num">03</div>
         <div>
           <h4>Single API for <span class="accent">all three surfaces</span></h4>
-          <p>Rather than separate backends for USSD, mobile, and web, all three call the same Express API. The USSD handler is just another controller that maps keypad inputs to the same service layer the mobile app uses. This keeps business logic in one place — a fix or new validation rule applies to every interface automatically.</p>
+          <p>Rather than separate backends for USSD, mobile, and web, all three call the same Express API. The USSD handler is just another controller that maps keypad inputs to the same service layer the mobile app uses. This keeps business logic in one place - a fix or new validation rule applies to every interface automatically.</p>
         </div>
       </div>
     </div>
@@ -503,7 +503,7 @@
     <div class="section-label">status</div>
     <h2 class="section-title">Where it's <span class="accent">at</span></h2>
     <div class="cs-prose">
-      <p>Active development. The core backend — members, groups, contributions, payouts — is built and tested. The USSD flow covers the primary journeys: join a group, make a contribution, check balance, view payout schedule. The React Native mobile app is in progress; the web admin frontend is next in the queue.</p>
+      <p>Active development. The core backend - members, groups, contributions, payouts - is built and tested. The USSD flow covers the primary journeys: join a group, make a contribution, check balance, view payout schedule. The React Native mobile app is in progress; the web admin frontend is next in the queue.</p>
       <p>This is the kind of project I love: real users, real constraints, and systems that have to be correct because people's money is involved.</p>
     </div>
   </section>
