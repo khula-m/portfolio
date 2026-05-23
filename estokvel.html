@@ -28,7 +28,7 @@
     --mono: 'Geist Mono', 'Courier New', monospace;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
     color: var(--text);
@@ -292,18 +292,6 @@
     .cs-next-link { padding: 24px 28px; }
     .cs-decision { grid-template-columns: 1fr; gap: 8px; }
     .cs-decision-num { font-size: 28px; }
-  }
-
-  /* Respect user's motion preference */
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .blob { animation: none !important; }
-    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-  }
-
-  /* Prevent sticky hover states on touch screens */
-  @media (hover: none) {
-    .cs-next-link:hover, .cs-toc a:hover { transform: none !important; }
   }
 </style>
 </head>

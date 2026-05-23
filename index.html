@@ -38,7 +38,7 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
     color: var(--text);
@@ -250,7 +250,7 @@
     font-weight: 400;
     color: var(--text-dim);
     margin-bottom: 32px;
-    min-height: 1.4em;
+    height: 1.4em;
     opacity: 0;
     animation: fadeUp 0.9s 0.4s forwards;
     display: flex;
@@ -1032,134 +1032,6 @@
     .email-card { padding: 8px 8px 8px 16px; flex-direction: column; gap: 8px; align-items: stretch; text-align: center; }
     .email-card .email-text { font-size: 13px; }
   }
-
-  /* Respect user's motion preference - disable animations for accessibility */
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .blob, .status-dot { animation: none !important; }
-    .status-pill, .hero-name, .hero-roles, .hero-tagline, .hero-ctas, .terminal {
-      opacity: 1 !important;
-      animation: none !important;
-    }
-    .reveal {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
-    .skill-card {
-      opacity: 1 !important;
-      transform: none !important;
-      animation: none !important;
-    }
-  }
-
-  /* Prevent sticky hover states on touch screens */
-  @media (hover: none) {
-    .btn:hover, .tile:hover, .project-card:hover,
-    .skill-card:hover, .training-item:hover { transform: none !important; }
-  }
-
-  /* === Chapter sidebar navigation === */
-  .chapter-nav {
-    position: fixed;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 20px;
-    z-index: 50;
-  }
-  .chapter-dot {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .chapter-dot-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-faint);
-    letter-spacing: 0.08em;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s, color 0.2s;
-    white-space: nowrap;
-  }
-  .chapter-nav:hover .chapter-dot-label { opacity: 1; }
-  .chapter-dot-pip {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--border-hi);
-    flex-shrink: 0;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .chapter-dot.active .chapter-dot-pip {
-    background: var(--lime);
-    box-shadow: 0 0 8px var(--lime);
-    width: 8px;
-    height: 8px;
-  }
-  .chapter-dot.active .chapter-dot-label { color: var(--lime); }
-  @media (max-width: 960px) { .chapter-nav { display: none; } }
-
-  /* === About section expandable tiles === */
-  .bento-reveal { display: contents; }
-  .bento-reveal.hidden { display: none; }
-  .show-more-btn {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px 32px;
-    border: 1px dashed var(--border-hi);
-    border-radius: 16px;
-    cursor: pointer;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-faint);
-    background: transparent;
-    letter-spacing: 0.06em;
-    transition: all 0.3s;
-    width: 100%;
-  }
-  .show-more-btn:hover { border-color: var(--lime); color: var(--lime); background: var(--lime-glow); }
-  .show-more-btn.gone { display: none; }
-
-  /* === Hero scroll hint === */
-  .scroll-hint {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 40px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-faint);
-    letter-spacing: 0.1em;
-    opacity: 0;
-    animation: fadeUp 0.9s 1.5s forwards;
-  }
-  .scroll-hint-pip {
-    width: 1px;
-    height: 32px;
-    background: linear-gradient(to bottom, transparent, var(--text-faint));
-    animation: scrollPip 1.8s ease-in-out infinite;
-  }
-  @keyframes scrollPip {
-    0%, 100% { transform: scaleY(0.6); opacity: 0.4; }
-    50% { transform: scaleY(1); opacity: 1; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .scroll-hint { opacity: 1 !important; animation: none !important; }
-    .scroll-hint-pip { animation: none !important; }
-  }
-
-  /* === Chapter numbers in section labels === */
-  .ch-num { color: var(--text-faint); }
 </style>
 </head>
 <body>
@@ -1170,29 +1042,6 @@
 <div class="blob blob-2"></div>
 <div class="blob blob-3"></div>
 <div class="grain"></div>
-
-<nav class="chapter-nav" id="chapterNav" aria-label="Page sections">
-  <a class="chapter-dot active" data-section="hero" href="#" aria-label="Intro">
-    <span class="chapter-dot-label">intro</span>
-    <span class="chapter-dot-pip"></span>
-  </a>
-  <a class="chapter-dot" data-section="about" href="#about" aria-label="About">
-    <span class="chapter-dot-label">about</span>
-    <span class="chapter-dot-pip"></span>
-  </a>
-  <a class="chapter-dot" data-section="work" href="#work" aria-label="Work">
-    <span class="chapter-dot-label">work</span>
-    <span class="chapter-dot-pip"></span>
-  </a>
-  <a class="chapter-dot" data-section="stack" href="#stack" aria-label="Stack">
-    <span class="chapter-dot-label">stack</span>
-    <span class="chapter-dot-pip"></span>
-  </a>
-  <a class="chapter-dot" data-section="contact" href="#contact" aria-label="Contact">
-    <span class="chapter-dot-label">contact</span>
-    <span class="chapter-dot-pip"></span>
-  </a>
-</nav>
 
 <nav>
   <a href="#" class="nav-logo">khula<span>.dev</span></a>
@@ -1206,7 +1055,7 @@
 
 <main class="container">
 
-  <section class="hero" id="hero">
+  <section class="hero">
     <div class="status-pill">
       <span class="status-dot"></span>
       Available for opportunities · 2026
@@ -1251,15 +1100,10 @@
         <!-- typed in via JS -->
       </div>
     </div>
-
-    <div class="scroll-hint">
-      <span class="scroll-hint-pip"></span>
-      <span>scroll to explore</span>
-    </div>
   </section>
 
   <section id="about" class="reveal">
-    <div class="section-label"><span class="ch-num">01 /</span> about</div>
+    <div class="section-label">about</div>
     <h2 class="section-title">
       A few <span class="accent">facts</span> about<br>who I am.
     </h2>
@@ -1295,50 +1139,44 @@
         <p>The deeper, less glamorous parts of building software are the ones I find most rewarding.</p>
       </div>
 
-      <button class="show-more-btn" id="aboutMoreBtn" aria-expanded="false">
-        know me more <span>→</span>
-      </button>
+      <div class="tile tile-now">
+        <div class="tile-label"><span class="dot"></span> currently</div>
+        <h4>What I'm up to</h4>
+        <ul>
+          <li><strong>Building</strong> - eStokvel community savings platform</li>
+          <li><strong>Studying</strong> - BSc Computing</li>
+          <li><strong>Exploring</strong> - distributed systems & AWS</li>
+        </ul>
+      </div>
 
-      <div class="bento-reveal hidden" id="aboutExtra">
-        <div class="tile tile-now">
-          <div class="tile-label"><span class="dot"></span> currently</div>
-          <h4>What I'm up to</h4>
-          <ul>
-            <li><strong>Building</strong> - eStokvel community savings platform</li>
-            <li><strong>Studying</strong> - BSc Computing</li>
-            <li><strong>Exploring</strong> - distributed systems & AWS</li>
-          </ul>
-        </div>
+      <div class="tile tile-awards">
+        <div class="tile-label"><span class="dot"></span> awards</div>
+        <div class="award-big">01</div>
+        <div class="award-sub">Winner</div>
+        <ul class="award-list">
+          <li>eV Challenge South Africa - designed, built & raced an electric vehicle</li>
+          <li>FNB Certificate in Full-Stack Development</li>
+        </ul>
+      </div>
 
-        <div class="tile tile-awards">
-          <div class="tile-label"><span class="dot"></span> awards</div>
-          <div class="award-big">01</div>
-          <div class="award-sub">Winner</div>
-          <ul class="award-list">
-            <li>eV Challenge South Africa - designed, built & raced an electric vehicle</li>
-            <li>FNB Certificate in Full-Stack Development</li>
-          </ul>
-        </div>
+      <div class="tile tile-mentor">
+        <div class="tile-label"><span class="dot"></span> volunteer</div>
+        <h4>Mentor</h4>
+        <div class="mentor-org">Jumpstart Your Career · Software Dev Learnership</div>
+        <p>Mentored learners through debugging sessions, code reviews, and project planning - helping them build the habits that matter more than syntax.</p>
+      </div>
 
-        <div class="tile tile-mentor">
-          <div class="tile-label"><span class="dot"></span> volunteer</div>
-          <h4>Mentor</h4>
-          <div class="mentor-org">Jumpstart Your Career · Software Dev Learnership</div>
-          <p>Mentored learners through debugging sessions, code reviews, and project planning - helping them build the habits that matter more than syntax.</p>
-        </div>
-
-        <div class="tile tile-reading">
-          <div class="tile-label"><span class="dot"></span> currently reading</div>
-          <div class="book-title">GRIT</div>
-          <div class="book-author">Angela Duckworth</div>
-          <div class="book-note">On why passion and perseverance matter more than talent.</div>
-        </div>
+      <div class="tile tile-reading">
+        <div class="tile-label"><span class="dot"></span> currently reading</div>
+        <div class="book-title">GRIT</div>
+        <div class="book-author">Angela Duckworth</div>
+        <div class="book-note">On why passion and perseverance matter more than talent.</div>
       </div>
     </div>
   </section>
 
   <section id="work" class="reveal">
-    <div class="section-label"><span class="ch-num">02 /</span> selected work</div>
+    <div class="section-label">selected work</div>
     <h2 class="section-title">
       Things <span class="stroke">I've shipped</span>
       <span class="accent">.</span>
@@ -1398,7 +1236,7 @@
   </section>
 
   <section id="stack" class="reveal">
-    <div class="section-label"><span class="ch-num">03 /</span> toolkit</div>
+    <div class="section-label">toolkit</div>
     <h2 class="section-title">
       The <span class="accent">stack</span> I<br>build with.
     </h2>
@@ -1506,7 +1344,7 @@
 
 <section id="contact" class="contact reveal">
   <div class="container">
-    <div class="section-label"><span class="ch-num">04 /</span> say hello</div>
+    <div class="section-label">say hello</div>
     <h2 class="contact-title">
       Got something <span class="stroke">interesting</span>?<br>
       <span class="accent">Let's build it.</span>
@@ -1647,20 +1485,18 @@
     setTimeout(() => runTerminal(0), 1200);
   });
 
-  // === Magnetic hover for buttons & cards (pointer devices only) ===
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    document.querySelectorAll('[data-magnetic], .btn').forEach(el => {
-      el.addEventListener('mousemove', (e) => {
-        const rect = el.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        el.style.transform = `translate(${x * 0.12}px, ${y * 0.12}px)`;
-      });
-      el.addEventListener('mouseleave', () => {
-        el.style.transform = '';
-      });
+  // === Magnetic hover for buttons & cards ===
+  document.querySelectorAll('[data-magnetic], .btn').forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * 0.12}px, ${y * 0.12}px)`;
     });
-  }
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = '';
+    });
+  });
 
   // === Copy email ===
   const emailCard = document.getElementById('emailCard');
@@ -1689,7 +1525,7 @@
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
@@ -1709,45 +1545,6 @@
     });
   }, { threshold: 0.15 });
   if (skillsGrid) stackObserver.observe(skillsGrid);
-
-  // === Chapter sidebar dots - highlight active section ===
-  const chapterDots = document.querySelectorAll('.chapter-dot');
-  const chapterSections = ['hero', 'about', 'work', 'stack', 'contact'];
-
-  const chapterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        chapterDots.forEach(dot => {
-          dot.classList.toggle('active', dot.dataset.section === id);
-        });
-      }
-    });
-  }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
-
-  chapterSections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) chapterObserver.observe(el);
-  });
-
-  // === "Know me more" — expand hidden about tiles ===
-  const aboutMoreBtn = document.getElementById('aboutMoreBtn');
-  const aboutExtra = document.getElementById('aboutExtra');
-
-  aboutMoreBtn?.addEventListener('click', () => {
-    aboutExtra.classList.remove('hidden');
-    aboutMoreBtn.classList.add('gone');
-    // Trigger reveal animations on newly shown tiles
-    aboutExtra.querySelectorAll('.tile').forEach((tile, i) => {
-      tile.style.opacity = '0';
-      tile.style.transform = 'translateY(24px)';
-      tile.style.transition = `opacity 0.5s ${i * 80}ms, transform 0.5s ${i * 80}ms cubic-bezier(0.16,1,0.3,1)`;
-      requestAnimationFrame(() => {
-        tile.style.opacity = '1';
-        tile.style.transform = 'translateY(0)';
-      });
-    });
-  });
 </script>
 </body>
 </html>
